@@ -34,7 +34,6 @@ public class ImmutableLinkedList implements ImmutableList {
         Node current = new Node();
         head.next = current;
         listLength = inputArray.length;
-        int i = 0;
         for (int j = 1; j < listLength; j++) {
             current.value = inputArray[j];
             Node next_node = new Node();
@@ -43,7 +42,7 @@ public class ImmutableLinkedList implements ImmutableList {
         }
     }
 
-    public void LinkedListIndexOutOfBound(int index){
+    public void linkedListIndexOutOfBound(int index){
         if(index < 0 || index >= listLength){
             throw new ArrayIndexOutOfBoundsException();
         }
@@ -65,7 +64,7 @@ public class ImmutableLinkedList implements ImmutableList {
 
     @Override
     public ImmutableLinkedList add(int index, Object e) {
-        if(index != listLength) {LinkedListIndexOutOfBound(index);}
+        if(index != listLength) {linkedListIndexOutOfBound(index);}
         Object[] added_array = new Object[]{e};
         return addAll(index, added_array);
 
@@ -77,7 +76,7 @@ public class ImmutableLinkedList implements ImmutableList {
     }
     @Override
     public ImmutableLinkedList addAll(int index, Object[] c) {
-        if(index != listLength) {LinkedListIndexOutOfBound(index);}
+        if(index != listLength) {linkedListIndexOutOfBound(index);}
         Object[] new_array = new Object[listLength + c.length];
         Node current = head;
         for (int i = 0; i < index; i++) {
@@ -97,7 +96,7 @@ public class ImmutableLinkedList implements ImmutableList {
     }
     @Override
     public Object get(int index) {
-        LinkedListIndexOutOfBound(index);
+        linkedListIndexOutOfBound(index);
         Node current = head;
         for (int i = 0; i < index; i++) {
             current = current.next;
@@ -107,7 +106,7 @@ public class ImmutableLinkedList implements ImmutableList {
 
     @Override
     public ImmutableLinkedList remove(int index) {
-        LinkedListIndexOutOfBound(index);
+        linkedListIndexOutOfBound(index);
         Object[] new_array = new Object[listLength - 1];
         Node current = head;
         for (int i = 0; i < index; i++) {
@@ -125,7 +124,7 @@ public class ImmutableLinkedList implements ImmutableList {
 
     @Override
     public ImmutableLinkedList set(int index, Object e) {
-        LinkedListIndexOutOfBound(index);
+        linkedListIndexOutOfBound(index);
         Object[] new_array = this.toArray();
         new_array[index] = e;
         return new ImmutableLinkedList(new_array);

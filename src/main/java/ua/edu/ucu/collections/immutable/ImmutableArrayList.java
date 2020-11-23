@@ -13,11 +13,11 @@ public final class ImmutableArrayList implements ImmutableList {
     }
 
     public ImmutableArrayList(Object[] inputArray){
-        this.array = inputArray;
+        this.array = inputArray.clone();
         this.array_length = inputArray.length;
     }
 
-    public void ArrayListIndexOutOfBound(int index){
+    public void arrayListIndexOutOfBound(int index){
         if(index < 0 || index >= array_length){
             throw new ArrayIndexOutOfBoundsException();
         }
@@ -30,7 +30,7 @@ public final class ImmutableArrayList implements ImmutableList {
     }
     @Override
     public ImmutableArrayList add(int index, Object e) {
-        if(index != array_length){ArrayListIndexOutOfBound(index);}
+        if(index != array_length){arrayListIndexOutOfBound(index);}
         Object[] added_array = new Object[]{e};
         return addAll(index, added_array);
 
@@ -42,7 +42,7 @@ public final class ImmutableArrayList implements ImmutableList {
     }
     @Override
     public ImmutableArrayList addAll(int index, Object[] c) {
-        if(index != array_length){ArrayListIndexOutOfBound(index);}
+        if(index != array_length){arrayListIndexOutOfBound(index);}
         Object[] new_array = new Object[array_length + c.length];
         System.arraycopy(array, 0, new_array, 0, index);
         System.arraycopy(c, 0, new_array, index, c.length);
@@ -53,13 +53,13 @@ public final class ImmutableArrayList implements ImmutableList {
     }
     @Override
     public Object get(int index) {
-        ArrayListIndexOutOfBound(index);
+        arrayListIndexOutOfBound(index);
         return array[index];
     }
 
     @Override
     public ImmutableArrayList remove(int index) {
-        ArrayListIndexOutOfBound(index);
+        arrayListIndexOutOfBound(index);
         Object[] new_array = new Object[array_length - 1];
         System.arraycopy(array, 0, new_array, 0, index);
         System.arraycopy(array, index + 1, new_array, index, array_length - index - 1);
@@ -68,7 +68,7 @@ public final class ImmutableArrayList implements ImmutableList {
 
     @Override
     public ImmutableArrayList set(int index, Object e) {
-        ArrayListIndexOutOfBound(index);
+        arrayListIndexOutOfBound(index);
         Object[] new_array = array.clone();
         new_array[index] = e;
         return new ImmutableArrayList(new_array);
