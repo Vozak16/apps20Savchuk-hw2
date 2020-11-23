@@ -86,7 +86,7 @@ public class ImmutableLinkedList implements ImmutableList {
         }
         System.arraycopy(c, 0, new_array, index, c.length);
 
-        for (int i = c.length + index; i < c.length; i++) {
+        for (int i = c.length + index; i < new_array.length; i++) {
             new_array[i] = current.value;
             current = current.next;
 
@@ -114,7 +114,10 @@ public class ImmutableLinkedList implements ImmutableList {
             current = current.next;
 
         }
-        for (int i = index + 1; i < new_array.length; i++) {
+
+        current = current.next;
+
+        for (int i = index; i < new_array.length; i++) {
             new_array[i] = current.value;
             current = current.next;
         }
@@ -181,7 +184,7 @@ public class ImmutableLinkedList implements ImmutableList {
     }
 
     public Object getLast(){
-        return get(listLength);
+        return get(listLength - 1);
     }
 
     public ImmutableLinkedList removeFirst(){
@@ -189,7 +192,7 @@ public class ImmutableLinkedList implements ImmutableList {
 
     }
     public ImmutableLinkedList removeLast(){
-        return remove(listLength);
+        return remove(listLength - 1);
     }
 
 
