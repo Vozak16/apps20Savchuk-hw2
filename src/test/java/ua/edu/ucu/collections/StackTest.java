@@ -32,13 +32,12 @@ public class StackTest {
     public void testPop() {
         Object elem = stack.pop();
         assertEquals(elem, 75.5);
-        assertArrayEquals(new Object[]{30}, stack.stack.toArray());
     }
 
     @Test
     public void testPush() {
         stack.push(50);
-        assertArrayEquals(new Object[]{50, 75.5, 30}, stack.stack.toArray());
+        assertEquals(stack.peek(), 50);
     }
 
 }

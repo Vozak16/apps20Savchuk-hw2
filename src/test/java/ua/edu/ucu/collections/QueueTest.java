@@ -32,13 +32,12 @@ public class QueueTest {
     public void testDequeue() {
         Object elem = queue.dequeue();
         assertEquals(elem, 30);
-        assertArrayEquals(new Object[]{75.5}, queue.queue.toArray());
     }
 
     @Test
     public void testEnqueue() {
         queue.enqueue(50);
-        assertArrayEquals(new Object[]{50, 75.5, 30}, queue.queue.toArray());
+        assertEquals(queue.peek(), elements[elements.length - 1]);
     }
     
 }

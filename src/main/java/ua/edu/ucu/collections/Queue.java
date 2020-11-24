@@ -4,13 +4,13 @@ import ua.edu.ucu.collections.immutable.ImmutableLinkedList;
 
 public class Queue {
 
-    public ImmutableLinkedList queue;
+    private ImmutableLinkedList queue;
 
-    public Queue(ImmutableLinkedList linkedList){
+    public Queue(ImmutableLinkedList linkedList) {
         queue = linkedList;
     }
 
-    public Queue(){
+    public Queue() {
         queue = new ImmutableLinkedList();
     }
 
@@ -19,13 +19,12 @@ public class Queue {
     }
 
     public Object dequeue() {
-        Object first_elem = queue.getLast();
+        Object firstElem = queue.getLast();
         queue = queue.removeLast();
-        return first_elem;
+        return firstElem;
     }
 
-    public void enqueue(Object e){
+    public void enqueue(Object e) {
         queue = queue.addFirst(e);
     }
-    
 }

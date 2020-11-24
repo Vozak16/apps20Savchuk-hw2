@@ -4,27 +4,27 @@ import ua.edu.ucu.collections.immutable.ImmutableLinkedList;
 
 public class Stack {
 
-    public ImmutableLinkedList stack;
+    private ImmutableLinkedList stack;
 
-    public Stack(){
+    public Stack() {
         stack = new ImmutableLinkedList();
     }
 
-    public Stack(ImmutableLinkedList linkedList){
+    public Stack(ImmutableLinkedList linkedList) {
         stack = linkedList;
     }
 
-    public Object peek(){
+    public Object peek() {
         return stack.getFirst();
     }
 
-    public Object pop(){
-        Object first_elem = stack.getFirst();
+    public Object pop() {
+        Object firstElem = stack.getFirst();
         stack = stack.removeFirst();
-        return first_elem;
+        return firstElem;
     }
 
-    public void push(Object e){
+    public void push(Object e) {
         stack = stack.addFirst(e);
     }
     
