@@ -5,20 +5,20 @@ import java.util.Arrays;
 public final class ImmutableArrayList implements ImmutableList {
 
     private final Object[] array;
-    private final int array_length;
+    private final int arrayLength;
 
     public ImmutableArrayList() {
         this.array = new Object[0];
-        this.array_length = 0;
+        this.arrayLength = 0;
     }
 
     public ImmutableArrayList(Object[] inputArray) {
         this.array = inputArray.clone();
-        this.array_length = inputArray.length;
+        this.arrayLength = inputArray.length;
     }
 
     public void arrayListIndexOutOfBound(int index) {
-        if(index < 0 || index >= array_length){
+        if (index < 0 || index >= arrayLength) {
             throw new ArrayIndexOutOfBoundsException();
         }
 
@@ -26,29 +26,29 @@ public final class ImmutableArrayList implements ImmutableList {
 
     @Override
     public ImmutableArrayList add(Object e) {
-        return add(array_length, e);
+        return add(arrayLength, e);
     }
     @Override
     public ImmutableArrayList add(int index, Object e) {
-        if(index != array_length){arrayListIndexOutOfBound(index);}
-        Object[] added_array = new Object[]{e};
-        return addAll(index, added_array);
+        if (index != arrayLength) {arrayListIndexOutOfBound(index);}
+        Object[] addedArray = new Object[]{e};
+        return addAll(index, addedArray);
 
     }
     @Override
     public ImmutableArrayList addAll(Object[] c) {
-        return addAll(array_length, c);
+        return addAll(arrayLength, c);
 
     }
     @Override
     public ImmutableArrayList addAll(int index, Object[] c) {
-        if(index != array_length) {arrayListIndexOutOfBound(index);}
-        Object[] new_array = new Object[array_length + c.length];
-        System.arraycopy(array, 0, new_array, 0, index);
-        System.arraycopy(c, 0, new_array, index, c.length);
-        System.arraycopy(array, index, new_array, index + c.length,
-                array_length - index);
-        return new ImmutableArrayList(new_array);
+        if (index != arrayLength) {arrayListIndexOutOfBound(index);}
+        Object[] newArray = new Object[arrayLength + c.length];
+        System.arraycopy(array, 0, newArray, 0, index);
+        System.arraycopy(c, 0, newArray, index, c.length);
+        System.arraycopy(array, index, newArray, index + c.length,
+                arrayLength - index);
+        return new ImmutableArrayList(newArray);
 
     }
     @Override
@@ -60,24 +60,25 @@ public final class ImmutableArrayList implements ImmutableList {
     @Override
     public ImmutableArrayList remove(int index) {
         arrayListIndexOutOfBound(index);
-        Object[] new_array = new Object[array_length - 1];
-        System.arraycopy(array, 0, new_array, 0, index);
-        System.arraycopy(array, index + 1, new_array, index, array_length - index - 1);
-        return new ImmutableArrayList(new_array);
+        Object[] newArray = new Object[arrayLength - 1];
+        System.arraycopy(array, 0, newArray, 0, index);
+        System.arraycopy(array, index + 1,
+                newArray, index, arrayLength - index - 1);
+        return new ImmutableArrayList(newArray);
     }
 
     @Override
     public ImmutableArrayList set(int index, Object e) {
         arrayListIndexOutOfBound(index);
-        Object[] new_array = array.clone();
-        new_array[index] = e;
-        return new ImmutableArrayList(new_array);
+        Object[] newArray = array.clone();
+        newArray[index] = e;
+        return new ImmutableArrayList(newArray);
     }
 
     @Override
     public int indexOf(Object e) {
         int i = 0;
-        while (i < array_length) {
+        while (i < arrayLength) {
             if (array[i] == e) {
                 return i;
             } else {
@@ -89,7 +90,7 @@ public final class ImmutableArrayList implements ImmutableList {
 
     @Override
     public int size(){
-        return array_length;
+        return arrayLength;
     }
 
     @Override
@@ -98,7 +99,7 @@ public final class ImmutableArrayList implements ImmutableList {
     }
     @Override
     public boolean isEmpty() {
-        return array_length == 0;
+        return arrayLength == 0;
     }
 
     @Override

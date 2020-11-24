@@ -36,14 +36,14 @@ public class ImmutableLinkedList implements ImmutableList {
         listLength = inputArray.length;
         for (int j = 1; j < listLength; j++) {
             current.value = inputArray[j];
-            Node next_node = new Node();
-            current.next = next_node;
-            current = next_node;
+            Node nextNode = new Node();
+            current.next = nextNode;
+            current = nextNode;
         }
     }
 
     public void linkedListIndexOutOfBound(int index) {
-        if(index < 0 || index >= listLength){
+        if (index < 0 || index >= listLength) {
             throw new ArrayIndexOutOfBoundsException();
         }
 
@@ -64,9 +64,11 @@ public class ImmutableLinkedList implements ImmutableList {
 
     @Override
     public ImmutableLinkedList add(int index, Object e) {
-        if(index != listLength) {linkedListIndexOutOfBound(index);}
-        Object[] added_array = new Object[]{e};
-        return addAll(index, added_array);
+        if (index != listLength) {
+            linkedListIndexOutOfBound(index);
+        }
+        Object[] addedArray = new Object[]{e};
+        return addAll(index, addedArray);
 
     }
     @Override
@@ -76,22 +78,24 @@ public class ImmutableLinkedList implements ImmutableList {
     }
     @Override
     public ImmutableLinkedList addAll(int index, Object[] c) {
-        if(index != listLength) {linkedListIndexOutOfBound(index);}
-        Object[] new_array = new Object[listLength + c.length];
+        if (index != listLength) {
+            linkedListIndexOutOfBound(index);
+        }
+        Object[] newArray = new Object[listLength + c.length];
         Node current = head;
         for (int i = 0; i < index; i++) {
-            new_array[i] = current.value;
+            newArray[i] = current.value;
             current = current.next;
             
         }
-        System.arraycopy(c, 0, new_array, index, c.length);
+        System.arraycopy(c, 0, newArray, index, c.length);
 
-        for (int i = c.length + index; i < new_array.length; i++) {
-            new_array[i] = current.value;
+        for (int i = c.length + index; i < newArray.length; i++) {
+            newArray[i] = current.value;
             current = current.next;
 
         }
-        return new ImmutableLinkedList(new_array);
+        return new ImmutableLinkedList(newArray);
 
     }
     @Override
@@ -107,30 +111,30 @@ public class ImmutableLinkedList implements ImmutableList {
     @Override
     public ImmutableLinkedList remove(int index) {
         linkedListIndexOutOfBound(index);
-        Object[] new_array = new Object[listLength - 1];
+        Object[] newArray = new Object[listLength - 1];
         Node current = head;
         for (int i = 0; i < index; i++) {
-            new_array[i] = current.value;
+            newArray[i] = current.value;
             current = current.next;
 
         }
 
         current = current.next;
 
-        for (int i = index; i < new_array.length; i++) {
-            new_array[i] = current.value;
+        for (int i = index; i < newArray.length; i++) {
+            newArray[i] = current.value;
             current = current.next;
         }
 
-        return new ImmutableLinkedList(new_array);
+        return new ImmutableLinkedList(newArray);
     }
 
     @Override
     public ImmutableLinkedList set(int index, Object e) {
         linkedListIndexOutOfBound(index);
-        Object[] new_array = this.toArray();
-        new_array[index] = e;
-        return new ImmutableLinkedList(new_array);
+        Object[] newArray = this.toArray();
+        newArray[index] = e;
+        return new ImmutableLinkedList(newArray);
     }
 
     @Override
@@ -164,14 +168,14 @@ public class ImmutableLinkedList implements ImmutableList {
 
     @Override
     public Object[] toArray() {
-        Object[] new_array = new Object[listLength];
+        Object[] newArray = new Object[listLength];
         Node current = head;
         for (int i = 0; i < listLength; i++) {
-            new_array[i] = current.value;
+            newArray[i] = current.value;
             current = current.next;
 
         }
-        return new_array;
+        return newArray;
     }
 
     @Override
