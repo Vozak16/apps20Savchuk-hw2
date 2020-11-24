@@ -30,7 +30,9 @@ public final class ImmutableArrayList implements ImmutableList {
     }
     @Override
     public ImmutableArrayList add(int index, Object e) {
-        if (index != arrayLength) {arrayListIndexOutOfBound(index);}
+        if (index != arrayLength) {
+            arrayListIndexOutOfBound(index);
+        }
         Object[] addedArray = new Object[]{e};
         return addAll(index, addedArray);
 
@@ -42,7 +44,9 @@ public final class ImmutableArrayList implements ImmutableList {
     }
     @Override
     public ImmutableArrayList addAll(int index, Object[] c) {
-        if (index != arrayLength) {arrayListIndexOutOfBound(index);}
+        if (index != arrayLength) {
+            arrayListIndexOutOfBound(index);
+        }
         Object[] newArray = new Object[arrayLength + c.length];
         System.arraycopy(array, 0, newArray, 0, index);
         System.arraycopy(c, 0, newArray, index, c.length);
@@ -89,7 +93,7 @@ public final class ImmutableArrayList implements ImmutableList {
     }
 
     @Override
-    public int size(){
+    public int size() {
         return arrayLength;
     }
 

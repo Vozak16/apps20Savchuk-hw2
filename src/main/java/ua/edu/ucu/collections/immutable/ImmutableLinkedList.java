@@ -5,8 +5,8 @@ import java.util.Arrays;
 public class ImmutableLinkedList implements ImmutableList {
 
     static class Node {
-        Node next;
-        Object value;
+        private Node next;
+        private Object value;
 
         public Node() {
             this.value = null;
@@ -153,7 +153,7 @@ public class ImmutableLinkedList implements ImmutableList {
     }
 
     @Override
-    public int size(){
+    public int size() {
         return listLength;
     }
 
