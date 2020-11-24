@@ -14,11 +14,11 @@ public class Queue {
         queue = new ImmutableLinkedList();
     }
 
-    public Object peek(){
+    public Object peek() {
         return queue.getLast();
     }
 
-    public Object dequeue(){
+    public Object dequeue() {
         Object first_elem = queue.getLast();
         queue = queue.removeLast();
         return first_elem;

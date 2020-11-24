@@ -15,7 +15,7 @@ public class StackTest {
 
 
     @Before
-    public void init(){
+    public void init() {
         elements = new Object[]{75.5, 30};
         immutableLinkedList = new ImmutableLinkedList(elements);
         stack = new Stack(immutableLinkedList);

@@ -7,17 +7,17 @@ public final class ImmutableArrayList implements ImmutableList {
     private final Object[] array;
     private final int array_length;
 
-    public ImmutableArrayList(){
+    public ImmutableArrayList() {
         this.array = new Object[0];
         this.array_length = 0;
     }
 
-    public ImmutableArrayList(Object[] inputArray){
+    public ImmutableArrayList(Object[] inputArray) {
         this.array = inputArray.clone();
         this.array_length = inputArray.length;
     }
 
-    public void arrayListIndexOutOfBound(int index){
+    public void arrayListIndexOutOfBound(int index) {
         if(index < 0 || index >= array_length){
             throw new ArrayIndexOutOfBoundsException();
         }
@@ -42,7 +42,7 @@ public final class ImmutableArrayList implements ImmutableList {
     }
     @Override
     public ImmutableArrayList addAll(int index, Object[] c) {
-        if(index != array_length){arrayListIndexOutOfBound(index);}
+        if(index != array_length) {arrayListIndexOutOfBound(index);}
         Object[] new_array = new Object[array_length + c.length];
         System.arraycopy(array, 0, new_array, 0, index);
         System.arraycopy(c, 0, new_array, index, c.length);

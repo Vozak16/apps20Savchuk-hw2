@@ -8,12 +8,12 @@ public class ImmutableLinkedList implements ImmutableList {
         Node next;
         Object value;
 
-        public Node(){
+        public Node() {
             this.value = null;
             this.next = null;
         }
 
-        public Node(Object inputData){
+        public Node(Object inputData) {
             this.value = inputData;
             this.next = null;
         }
@@ -22,14 +22,14 @@ public class ImmutableLinkedList implements ImmutableList {
     private final Node head;
     private final int listLength;
 
-    public ImmutableLinkedList(){
+    public ImmutableLinkedList() {
         head = new Node();
         listLength = 0;
     }
 
     //private void PutNodeAhead()
 
-    public ImmutableLinkedList(Object[] inputArray){
+    public ImmutableLinkedList(Object[] inputArray) {
         head = new Node(inputArray[0]);
         Node current = new Node();
         head.next = current;
@@ -42,7 +42,7 @@ public class ImmutableLinkedList implements ImmutableList {
         }
     }
 
-    public void linkedListIndexOutOfBound(int index){
+    public void linkedListIndexOutOfBound(int index) {
         if(index < 0 || index >= listLength){
             throw new ArrayIndexOutOfBoundsException();
         }
@@ -187,7 +187,7 @@ public class ImmutableLinkedList implements ImmutableList {
         return get(listLength - 1);
     }
 
-    public ImmutableLinkedList removeFirst(){
+    public ImmutableLinkedList removeFirst() {
         return remove(0);
 
     }
