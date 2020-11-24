@@ -183,11 +183,11 @@ public class ImmutableLinkedList implements ImmutableList {
         return Arrays.toString(this.toArray());
     }
 
-    public Object getFirst(){
+    public Object getFirst() {
         return get(0);
     }
 
-    public Object getLast(){
+    public Object getLast() {
         return get(listLength - 1);
     }
 
@@ -195,7 +195,7 @@ public class ImmutableLinkedList implements ImmutableList {
         return remove(0);
 
     }
-    public ImmutableLinkedList removeLast(){
+    public ImmutableLinkedList removeLast() {
         return remove(listLength - 1);
     }
 
